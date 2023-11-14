@@ -1,0 +1,5 @@
+mypy
+numpy
+pandas
+nptyping
+beartype
