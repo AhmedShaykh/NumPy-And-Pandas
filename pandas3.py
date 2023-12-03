@@ -4,6 +4,7 @@ from pandera.typing import Series;
 from datetime import datetime;
 
 class StudentSchema(pa.SchemaModel):
+    
     Roll_No: Series[int] = pa.Field(ge=1);
     Name: Series[str] = pa.Field(nullable=False);
     Father_Name: Series[str] = pa.Field(nullable=False);
