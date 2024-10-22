@@ -1,15 +1,5 @@
-import pandera as pa;
 import pandas as pd;
-from pandera.typing import Series;
 from datetime import datetime;
-
-class StudentSchema(pa.SchemaModel):
-    Roll_No: Series[int] = pa.Field(ge=1);
-    Name: Series[str] = pa.Field(nullable=False);
-    Father_Name: Series[str] = pa.Field(nullable=False);
-    Course: Series[str] = pa.Field(nullable=False);
-    Date_Of_Admission: Series[datetime] = pa.Field(le=datetime.now());
-    Fee: Series[int] = pa.Field(ge=0);
 
 studentsData = [
     {"Roll_No": 1, "Name": "Alice", "Father_Name": "Bob", "Course": "Physics", "Date_Of_Admission": "2023-01-10", "Fee": 10000},
@@ -27,8 +17,6 @@ studentsData = [
 studentsDf : pd.DataFrame = pd.DataFrame(studentsData);
 
 studentsDf["Date_Of_Admission"] = pd.to_datetime(studentsDf["Date_Of_Admission"]);
-
-validatedDf = StudentSchema.validate(studentsDf);
 
 print(studentsDf["Date_Of_Admission"].dt.year);
 
